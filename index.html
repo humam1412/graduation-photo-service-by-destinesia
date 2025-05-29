@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAD STUDIO | Minimalist Graduation Photography</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Splide Carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <style>
+        :root {
+            --primary: #111111;
+            --secondary: #f5f5f5;
+            --accent: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary);
+            color: var(--secondary);
+            overflow-x: hidden;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMxMTExMTEiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=');
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+        
+        /* Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 16px 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 12px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        
+        .nav-item.active, .nav-item:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+        
+        .nav-logo {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+            filter: invert(1);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item.active .nav-logo,
+        .nav-item:hover .nav-logo {
+            opacity: 1;
+            filter: invert(79%) sepia(29%) saturate(1200%) hue-rotate(356deg) brightness(90%) contrast(87%);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            z-index: -1;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.8;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-weight: 300;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 600px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: transparent;
+            color: var(--secondary);
+            border: 1px solid var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        /* Packages Section */
+        .section-title {
+            padding: 80px 10% 40px;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-transform: uppercase;
+        }
+        
+        .packages {
+            padding: 0 10% 120px;
+        }
+        
+        .package {
+            position: relative;
+            height: 80vh;
+            min-height: 500px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .package-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            transition: transform 0.5s ease;
+        }
+        
+        .package:hover .package-bg {
+            transform: scale(1.05);
+        }
+        
+        .package-content {
+            padding: 40px;
+            background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+        }
+        
+        .package-name {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 16px;
+        }
+        
+        .package-price {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        
+        .package-features li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+            font-weight: 300;
+        }
+        
+        .package-features li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        /* Portfolio Section */
+        .portfolio {
+            padding: 0 10% 120px;
+        }
+        
+        .splide__slide {
+            padding: 0 10px;
+        }
+        
+        .portfolio-item {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            position: relative;
+            border-radius: 4px;
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+        
+        .splide__arrow {
+            background: rgba(255,255,255,0.2);
+            opacity: 1;
+            width: 3em;
+            height: 3em;
+        }
+        
+        .splide__arrow svg {
+            fill: white;
+        }
+        
+        .splide__arrow:hover {
+            background: var(--accent);
+        }
+        
+        .splide__pagination__page {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .splide__pagination__page.is-active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 10% 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            margin-bottom: 40px;
+        }
+        
+        .contact p {
+            max-width: 600px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero, .section-title, .packages, .portfolio, .contact {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+            
+            .package {
+                height: 70vh;
+                min-height: 400px;
+            }
+            
+            .package-content {
+                padding: 24px;
+            }
+            
+            .splide__arrow {
+                width: 2em;
+                height: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Graduation" class="hero-bg">
+        <h1 data-aos="fade-up">Capture Your Achievement</h1>
+        <p data-aos="fade-up" data-aos-delay="100">Professional graduation photography with cinematic approach. Timeless memories for your special day.</p>
+        <a href="#packages" class="btn" data-aos="fade-up" data-aos-delay="200">View Packages</a>
+    </section>
+
+    <!-- Packages Section -->
+    <h2 class="section-title" id="packages">Packages</h2>
+    <section class="packages">
+        <!-- Regular Package -->
+        <div class="package" data-aos="fade-up">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Regular Package" class="package-bg">
+            <div class="package-content">
+                <h3 class="package-name">Solo Graduate</h3>
+                <div class="package-price">IDR 250K</div>
+                <ul class="package-features">
+                    <li>1 graduate</li>
+                    <li>40 minutes session</li>
+                    <li>1 photographer</li>
+                    <li>Unlimited high res photos</li>
+                    <li>15 edited photos</li>
+                    <li>Delivery via Google Drive</li>
+                </ul>
+                <a href="javascript:void(0);" class="btn" onclick="orderPackage('Solo Graduate', '250K', '1 graduate, 40 minutes session, 1 photographer, unlimited high res photos, 15 edited photos, Google Drive delivery')">Book Now</a>
+            </div>
+        </div>
+        
+        <!-- Couple Package -->
+        <div class="package" data-aos="fade-up">
+            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Couple Package" class="package-bg">
+            <div class="package-content">
+                <h3 class="package-name">Graduate + Partner</h3>
+                <div class="package-price">IDR 370K</div>
+                <ul class="package-features">
+                    <li>1 graduate + partner</li>
+                    <li>1 hour session</li>
+                    <li>1 photographer</li>
+                    <li>Unlimited high res photos</li>
+                    <li>25 edited photos</li>
+                    <li>Delivery via Google Drive</li>
+                </ul>
+                <a href="javascript:void(0);" class="btn" onclick="orderPackage('Graduate + Partner Package', '370K', '1 graduate + partner, 1 hour session, 1 photographer, unlimited high res photos, 25 edited photos, Google Drive delivery')">Book Now</a>
+            </div>
+        </div>
+        
+        <!-- Family Package -->
+        <div class="package" data-aos="fade-up">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Family Package" class="package-bg">
+            <div class="package-content">
+                <h3 class="package-name">Family Session</h3>
+                <div class="package-price">IDR 520K</div>
+                <ul class="package-features">
+                    <li>1 graduate + family</li>
+                    <li>1 hour session</li>
+                    <li>1 photographer</li>
+                    <li>Unlimited high res photos</li>
+                    <li>35 edited photos</li>
+                    <li>Delivery via Google Drive</li>
+                </ul>
+                <a href="javascript:void(0);" class="btn" onclick="orderPackage('Family Session Package', '520K', '1 graduate + family, 1 hour session, 1 photographer, unlimited high res photos, 35 edited photos, Google Drive delivery')">Book Now</a>
+            </div>
+        </div>
+        
+        <!-- Friends Package -->
+        <div class="package" data-aos="fade-up">
+            <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Friends Package" class="package-bg">
+            <div class="package-content">
+                <h3 class="package-name">Group Session</h3>
+                <div class="package-price">IDR 770K</div>
+                <ul class="package-features">
+                    <li>3-10 graduates</li>
+                    <li>1 hour session</li>
+                    <li>1 photographer</li>
+                    <li>Unlimited high res photos</li>
+                    <li>35 edited photos</li>
+                    <li>Delivery via Google Drive</li>
+                </ul>
+                <a href="javascript:void(0);" class="btn" onclick="orderPackage('Group Session Package', '770K', '3-10 graduates, 1 hour session, 1 photographer, unlimited high res photos, 35 edited photos, Google Drive delivery')">Book Now</a>
+            </div>
+        </div>
+        
+        <!-- Additional Package -->
+        <div class="package" data-aos="fade-up">
+            <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Video Package" class="package-bg">
+            <div class="package-content">
+                <h3 class="package-name">Video Add-on</h3>
+                <div class="package-price">IDR 150K</div>
+                <ul class="package-features">
+                    <li>Cinematic or trendy video</li>
+                    <li>Customized to your preference</li>
+                    <li>Professional editing</li>
+                    <li>Delivery via Google Drive</li>
+                </ul>
+                <p style="margin-top: 16px; opacity: 0.7;">*Can be added to any package</p>
+                <a href="javascript:void(0);" class="btn" onclick="orderPackage('Video Add-on Package', '150K', 'Cinematic or trendy video, customized to your preference, professional editing, Google Drive delivery')">Add to Order</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <h2 class="section-title" id="portfolio">Portfolio</h2>
+    <section class="portfolio">
+        <div class="splide" aria-label="Our Portfolio">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide">
+                        <div class="portfolio-item">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 1" class="portfolio-img">
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="portfolio-item">
+                            <img src="https://images.unsplash.com/photo-1523057530100-383d7fbc77a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 2" class="portfolio-img">
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="portfolio-item">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 3" class="portfolio-img">
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="portfolio-item">
+                            <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 4" class="portfolio-img">
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="portfolio-item">
+                            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 5" class="portfolio-img">
+                        </div>
+                    </li>
+                    <li class="splide__slide">
+                        <div class="portfolio-item">
+                            <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 6" class="portfolio-img">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 data-aos="fade-up">Ready to Book Your Session?</h2>
+        <p data-aos="fade-up" data-aos-delay="100">Contact us directly via WhatsApp to discuss your graduation photography needs and secure your booking.</p>
+        <a href="https://wa.me/6281220064709?text=Hi%20GRAD%20STUDIO,%20I%20want%20to%20book%20a%20graduation%20photo%20session" class="whatsapp-btn" data-aos="fade-up" data-aos-delay="200">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+    </section>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#packages" class="nav-item active">
+            <img src="https://cdn-icons-png.flaticon.com/512/709/709586.png" class="nav-logo" alt="Packages">
+            <span>Packages</span>
+        </a>
+        <a href="#portfolio" class="nav-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/709/709612.png" class="nav-logo" alt="Portfolio">
+            <span>Portfolio</span>
+        </a>
+        <a href="#contact" class="nav-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/709/709722.png" class="nav-logo" alt="Contact">
+            <span>Contact</span>
+        </a>
+    </nav>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Splide Carousel JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Initialize Splide Carousel
+        document.addEventListener( 'DOMContentLoaded', function() {
+            new Splide( '.splide', {
+                type       : 'loop',
+                perPage    : 3,
+                perMove    : 1,
+                gap        : '20px',
+                pagination : true,
+                arrows     : true,
+                autoplay   : true,
+                interval   : 3000,
+                pauseOnHover: true,
+                breakpoints: {
+                    768: {
+                        perPage: 2
+                    },
+                    480: {
+                        perPage: 1
+                    }
+                }
+            } ).mount();
+        } );
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Highlight active nav item
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('section, .section-title');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 300)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Package selection function with pre-filled WhatsApp message
+        function orderPackage(packageName, price, features) {
+            const message = `Hi GRAD STUDIO,\n\nI'm interested in booking the *${packageName}* (IDR ${price}).\n\nPackage includes:\n${features}\n\nCan you please provide more details about availability and booking process?`;
+            const whatsappUrl = `https://wa.me/6281220064709?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
