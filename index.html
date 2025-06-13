@@ -343,7 +343,7 @@
 <body>
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Graduation" class="hero-bg">
+        <img src="foto1.png" alt="Graduation" class="hero-bg">
         <h1 data-aos="fade-up">Capture Your Achievement</h1>
         <p data-aos="fade-up" data-aos-delay="100">Professional graduation photography with cinematic approach. Timeless memories for your special day.</p>
         <p data-aos="fade-up" class="package-price" data-aos-delay="100">this service provided and handled by <a style="color:#d4af37 ;" href="https://www.instagram.com/destinesia.adventure?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Destinesia</a> team </p>
@@ -355,7 +355,7 @@
     <section class="packages">
         <!-- Regular Package -->
         <div class="package" data-aos="fade-up">
-            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Regular Package" class="package-bg">
+            <img src="foto/ais1.JPG" alt="Regular Package" class="package-bg">
             <div class="package-content">
                 <h3 class="package-name">Solo Graduate</h3>
                 <div class="package-price">IDR 250K</div>
@@ -373,7 +373,7 @@
         
         <!-- Couple Package -->
         <div class="package" data-aos="fade-up">
-            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Couple Package" class="package-bg">
+            <img src="foto/ais2.JPG" alt="Couple Package" class="package-bg">
             <div class="package-content">
                 <h3 class="package-name">Graduate + Partner</h3>
                 <div class="package-price">IDR 370K</div>
@@ -391,7 +391,7 @@
         
         <!-- Family Package -->
         <div class="package" data-aos="fade-up">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Family Package" class="package-bg">
+            <img src="foto/DSC06699.jpg" alt="Family Package" class="package-bg">
             <div class="package-content">
                 <h3 class="package-name">Family Session</h3>
                 <div class="package-price">IDR 520K</div>
@@ -409,10 +409,10 @@
         
         <!-- Friends Package -->
         <div class="package" data-aos="fade-up">
-            <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Friends Package" class="package-bg">
+            <img src="foto\happy-graduated-students.jpg" alt="Friends Package" class="package-bg">
             <div class="package-content">
                 <h3 class="package-name">Group Session</h3>
-                <div class="package-price">IDR 770K</div>
+                <div class="package-price">IDR 670K</div>
                 <ul class="package-features">
                     <li>3-10 graduates</li>
                     <li>1 hour session</li>
@@ -425,23 +425,28 @@
             </div>
         </div>
         
-        <!-- Additional Package -->
-        <div class="package" data-aos="fade-up">
-            <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Video Package" class="package-bg">
-            <div class="package-content">
-                <h3 class="package-name">Video Add-on</h3>
-                <div class="package-price">IDR 150K</div>
-                <ul class="package-features">
-                    <li>Cinematic or trendy video</li>
-                    <li>Customized to your preference</li>
-                    <li>Professional editing</li>
-                    <li>Delivery via Google Drive</li>
-                </ul>
-                <p style="margin-top: 16px; opacity: 0.7;">*Can be added to any package</p>
-                <a href="javascript:void(0);" class="btn" onclick="orderPackage('Video Add-on Package', '150K', 'Cinematic or trendy video, customized to your preference, professional editing, Google Drive delivery')">Add to Order</a>
-            </div>
-        </div>
-    </section>
+<!-- Additional Package -->
+<div class="package" data-aos="fade-up" style="position: relative; overflow: hidden;">
+    <!-- Video background -->
+    <video autoplay loop muted playsinline class="package-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <source src="foto/Niken Cinematic Video 2.mp4" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Content -->
+    <div class="package-content" style="position: relative; z-index: 1;">
+        <h3 class="package-name">Video Add-on</h3>
+        <div class="package-price">IDR 200K</div>
+        <ul class="package-features">
+            <li>Cinematic or trendy video</li>
+            <li>Customized to your preference</li>
+            <li>Professional editing</li>
+            <li>Delivery via Google Drive</li>
+        </ul>
+        <p style="margin-top: 16px; opacity: 0.7;">*Can be added to any package</p>
+        <a href="javascript:void(0);" class="btn" onclick="orderPackage('Video Add-on Package', '150K', 'Cinematic or trendy video, customized to your preference, professional editing, Google Drive delivery')">Add to Order</a>
+    </div>
+</div>
 
     <!-- Portfolio Section -->
     <h2 class="section-title" id="portfolio">Portfolio</h2>
@@ -451,32 +456,32 @@
                 <ul class="splide__list">
                     <li class="splide__slide">
                         <div class="portfolio-item">
-                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 1" class="portfolio-img">
+                            <img src="foto/DSC06786.jpg" alt="Portfolio 1" class="portfolio-img">
                         </div>
                     </li>
                     <li class="splide__slide">
                         <div class="portfolio-item">
-                            <img src="https://images.unsplash.com/photo-1523057530100-383d7fbc77a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 2" class="portfolio-img">
+                            <img src="foto/DSC06796.jpg" alt="Portfolio 2" class="portfolio-img">
                         </div>
                     </li>
                     <li class="splide__slide">
                         <div class="portfolio-item">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 3" class="portfolio-img">
+                            <img src="foto/DSC06797.jpg" alt="Portfolio 3" class="portfolio-img">
                         </div>
                     </li>
                     <li class="splide__slide">
                         <div class="portfolio-item">
-                            <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 4" class="portfolio-img">
+                            <img src="foto/DSC06800.jpg" alt="Portfolio 4" class="portfolio-img">
                         </div>
                     </li>
                     <li class="splide__slide">
                         <div class="portfolio-item">
-                            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 5" class="portfolio-img">
+                            <img src="foto/DSC06809-2.jpg" alt="Portfolio 5" class="portfolio-img">
                         </div>
                     </li>
                     <li class="splide__slide">
                         <div class="portfolio-item">
-                            <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Portfolio 6" class="portfolio-img">
+                            <img src="foto/DSC06839.jpg" alt="Portfolio 6" class="portfolio-img">
                         </div>
                     </li>
                 </ul>
